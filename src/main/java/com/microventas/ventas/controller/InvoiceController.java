@@ -33,7 +33,8 @@ public class InvoiceController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Invoice> updateInvoice(@PathVariable Long id, @RequestBody Invoice invoiceDetails) {
-        return ResponseEntity.ok(invoiceService.updateInvoice(id, invoiceDetails));
+        Invoice updatedInvoice = invoiceService.updateInvoice(id, invoiceDetails);
+        return ResponseEntity.ok(updatedInvoice);
     }
 
     @DeleteMapping("/{id}")

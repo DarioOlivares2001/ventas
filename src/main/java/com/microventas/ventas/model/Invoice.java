@@ -31,6 +31,43 @@ public class Invoice {
     @Column(name = "fecha")
     private String fecha;
 
+
+
+    // Constructor por defecto
+    public Invoice() {
+    }
+
+    // Constructor con todos los campos
+    public Invoice(Long id, Integer orderNumber, Integer invoiceNumber, List<Item> items, Double total, UserInfo userInfo, String fecha) {
+        this.id = id;
+        this.orderNumber = orderNumber;
+        this.invoiceNumber = invoiceNumber;
+        this.items = items;
+        this.total = total;
+        this.userInfo = userInfo;
+        this.fecha = fecha;
+    }
+
+    // Constructor sin ID (para creación de nuevas facturas)
+    public Invoice(Integer orderNumber, Integer invoiceNumber, List<Item> items, Double total, UserInfo userInfo, String fecha) {
+        this.orderNumber = orderNumber;
+        this.invoiceNumber = invoiceNumber;
+        this.items = items;
+        this.total = total;
+        this.userInfo = userInfo;
+        this.fecha = fecha;
+    }
+
+    // Constructor básico (mínimos campos)
+    public Invoice(Long id, Double total) {
+        this.id = id;
+        this.total = total;
+    }
+
+   
+
+        
+
     public Long getId() {
         return id;
     }
@@ -87,58 +124,4 @@ public class Invoice {
         this.fecha = fecha;
     }
 
-}
-
-@Embeddable
-class UserInfo {
-    private String nombre;
-    private String email;
-    private String direccion;
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getDireccion() {
-        return direccion;
-    }
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    
-}
-
-@Embeddable
-class Item {
-    private String nombre;
-    private Integer quantity;
-    private Double precio;
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public Integer getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-    public Double getPrecio() {
-        return precio;
-    }
-    public void setPrecio(Double precio) {
-        this.precio = precio;
-    }
-
-    // Getters and Setters
 }
